@@ -31,8 +31,11 @@ botFunctions.InitBot = function(connector) {
             session.beginDialog("/crediData");
         },
         //Show results on dialog
-        function(session) {
-            session.beginDialog("/showResults");
+        function(session, results) {
+            session.beginDialog("/showResults", results);
+        },
+        function(session, results) {
+            session.beginDialog("/systemReset");
         }
     ]);
 
@@ -116,8 +119,7 @@ botFunctions.InitBot = function(connector) {
         },
         function (session, results) {
             if (results.response) {
-                session.beginDialog('/showResults',{ userData: session.dialogData.userData });
-                session.endDialog();
+                session.endDialogWithResult(session.dialogData.userData);
             }
             else {
                 session.endDialog("system_retry");
@@ -130,7 +132,7 @@ botFunctions.InitBot = function(connector) {
     bot.dialog('/showResults', [
         function (session, args) {
             var soapArgs = {
-                pCustomerId: args.userData.idNumber,
+                pCustomerId: args.idNumber,
                 pTypeId: "FISICO_NACIONAL",
                 pModelId: "PRIV_BACCR_COM_MOD_TAR",
                 pCustomerListParams: [
@@ -139,7 +141,7 @@ botFunctions.InitBot = function(connector) {
                         [
                             {
                                 "_x003C_Key_x003E_k__BackingField": "IDENTIFICACION",
-                                "_x003C_Value_x003E_k__BackingField": args.userData.idNumber
+                                "_x003C_Value_x003E_k__BackingField": args.idNumber
                             }
 
                         ]
@@ -159,7 +161,7 @@ botFunctions.InitBot = function(connector) {
                         [
                             {
                                 "_x003C_Key_x003E_k__BackingField": "INGRESO_PARAM",
-                                "_x003C_Value_x003E_k__BackingField": args.userData.incomeAmount
+                                "_x003C_Value_x003E_k__BackingField": args.incomeAmount
                             }
 
                         ]
@@ -180,6 +182,7 @@ botFunctions.InitBot = function(connector) {
                 pPriority: 1
             };
 
+            session.send("system_processing");
             soapReq.functions.sendCustomerAnalysis(soapArgs)
             .then(response => {
                 var result = response.EnqueueCustomerAnalysisV2Result,
@@ -193,16 +196,11 @@ botFunctions.InitBot = function(connector) {
                     util.format("Gracias por completar el formulario %s. Su número de gestión es %s", customer, operation);
 
                 session.send(text);
-                session.beginDialog("/systemReset");
+                session.endDialog();
             })
             .catch(err => {
-                console.log(err);
+                session.error(err);
             });
-
-            builder.Prompts.text(session, "system_processing");
-        },
-        function (session, results) {
-            // session.endDialog();
         }
     ]);
     
@@ -215,8 +213,8 @@ botFunctions.InitBot = function(connector) {
         //Specific data dialog
         function (session, results) {
             if (results.response) {
-                session.beginDialog("/crediData");
                 session.endDialog();
+                session.beginDialog("/crediData");
             }
             else {
                 session.endConversation("system_end");
