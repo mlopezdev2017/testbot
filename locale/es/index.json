@@ -1,0 +1,13 @@
+{
+    "greeting" : "Bienvenido al Bot de Apptividad Credi Quick",
+    "lang_choice_prompt": "¿Cuál es el idioma de su preferencia?",
+    "lang_choice_options": "Inglés|Español|Italiano",
+    "lang_preferred_language": "Tu lenguaje de preferencia ahora es: %s.",
+    "user_data_request_base": "Por favor, ingrese su ",
+    "user_data_id_number": "Número de identificación",
+    "user_data_type_income": "Tipo de ingreso",
+    "user_data_income_amount": "Cantidad de ingresos",
+    "user_data_verification": "La anterior información, ¿es correcta?",
+    "system_processing": "Por favor espere, procesando información",
+    "system_retry": "Reintento del sistema, por favor espere"
+}

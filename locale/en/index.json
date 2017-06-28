@@ -1,0 +1,13 @@
+{
+    "greeting" : "Welcome to Apptividad Credi Quick Bot",
+    "lang_choice_prompt": "What's your preferred language?",
+    "lang_choice_options": "English|Spanish|Italian",
+    "lang_preferred_language": "Your preferred language is now %s.",
+    "user_data_request_base": "Please, input your ",
+    "user_data_id_number": "Identification number",
+    "user_data_type_income": "Type of income",
+    "user_data_income_amount": "Income Amounts",
+    "user_data_verification": "Is this data correct?",
+    "system_processing": "Please wait, processing information",
+    "system_retry": "System retry, please wait"
+}
