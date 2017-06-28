@@ -5,9 +5,12 @@
     "lang_preferred_language": "Tu lenguaje de preferencia ahora es: %s.",
     "user_data_request_base": "Por favor, ingrese su ",
     "user_data_id_number": "Número de identificación",
-    "user_data_type_income": "Tipo de ingreso",
+    "user_data_credit_type": "Tipo de crédito",
+    "user_data_credit_type_options": "Tarjeta|Prestamo personal",
     "user_data_income_amount": "Cantidad de ingresos",
     "user_data_verification": "La anterior información, ¿es correcta?",
     "system_processing": "Por favor espere, procesando información",
-    "system_retry": "Reintento del sistema, por favor espere"
+    "system_retry": "Reintento del sistema, por favor espere",
+    "system_reset": "El proceso ha terminado, por favor confirme si desea realizar otra consulta.",
+    "system_end": "Gracias por usar nuestros servicios, hasta luego."
 }

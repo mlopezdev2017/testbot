@@ -5,9 +5,12 @@
     "lang_preferred_language": "Your preferred language is now %s.",
     "user_data_request_base": "Please, input your ",
     "user_data_id_number": "Identification number",
-    "user_data_type_income": "Type of income",
+    "user_data_credit_type": "Credit type",
+    "user_data_credit_type_options": "Credit card|Personal loan",
     "user_data_income_amount": "Income Amounts",
     "user_data_verification": "Is this data correct?",
     "system_processing": "Please wait, processing information",
-    "system_retry": "System retry, please wait"
+    "system_retry": "System retry, please wait",
+    "system_reset": "Process has terminated, please confirm if you want to make another consultation.",
+    "system_end": "Thank you for using our services. Good bye."
 }
